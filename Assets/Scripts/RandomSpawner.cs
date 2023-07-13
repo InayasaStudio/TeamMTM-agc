@@ -11,19 +11,12 @@ public class RandomSpawner : MonoBehaviour
 
 
     private float CoinCount;
-    private enum CoinSpawnState {Off, On};
 
     void Start()
     {
-        //CoinCount = CalculateCoinCount();
         MethodA();
     }
 
-
-    void Update()
-    {
-
-    }
 
     public void MethodA()
     {
@@ -38,21 +31,12 @@ public class RandomSpawner : MonoBehaviour
     }
 
     private IEnumerator cekSpawnCoin(int maximalCoin)
-    //private IEnumerator CheckSpawnCoin(int maximalCoin)
     {
         
         int maxCoin = maximalCoin;
         coinsPrefab = GameObject.FindGameObjectsWithTag("Coin");
         CoinCount = coinsPrefab.Length;
         yield return new WaitForSeconds(time);
-
-        /*
-        for(i = 0; i < maximalCoin; i++)
-        {
-            yield new WaitForSeconds
-        }
-        */
-        
         
         if(CoinCount < maxCoin)
         {

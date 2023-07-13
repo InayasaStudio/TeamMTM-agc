@@ -10,9 +10,14 @@ public class Death_Handler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if(other == deathArea)
         {
+            transform.position =  startPosition;
+        }
+        
+        if(other.gameObject.tag == "Trap")
+        {
+            Debug.Log("Kena Trap");
             transform.position =  startPosition;
         }
     }

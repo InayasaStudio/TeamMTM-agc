@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class RandomSpawnerTrap : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject trapPrefab;
+    public GameObject[] trapsPrefab;
+    public float timeToSpawn;
+    public int maxTrap;
+
+
+    private float trapCount;
+
     void Start()
     {
-        
+        MethodA();
     }
 
     // Update is called once per frame
@@ -15,4 +22,30 @@ public class RandomSpawnerTrap : MonoBehaviour
     {
         
     }
+
+    public void MethodA()
+    {
+        StartCoroutine(cekSpawnTrap(maxTrap));
+    }
+
+    private IEnumerator cekSpawnTrap(int maximalTrap)
+    {
+        
+        int maxTrap = maximalTrap;
+        trapsPrefab = GameObject.FindGameObjectsWithTag("Trap");
+        trapCount = trapsPrefab.Length;
+        yield return new WaitForSeconds(timeToSpawn);        
+        
+        if(trapCount < maxTrap)
+        {
+            Vector3 randomSpawnPosition = new Vector3(Random.Range(-8,5),1,Random.Range(-1,-6));
+            Instantiate(trapPrefab, randomSpawnPosition, Quaternion.identity);
+            MethodA();
+        }
+        
+       
+    }
+
+
+
 }

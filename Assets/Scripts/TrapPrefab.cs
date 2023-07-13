@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinPrefab : MonoBehaviour
+public class TrapPrefab : MonoBehaviour
 {
     public GameObject bola;
-    public GameObject selfCoin;
-    public RandomSpawner randomSpawner;
+    public GameObject selfTrap;
+    public RandomSpawnerTrap randomSpawnerTrap;
 
     public float time;
 
-    //private RandomSpawnerRef randomSpawnerRef;
-
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(DestroyWithTime(time));
-        randomSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<RandomSpawner>();
+        randomSpawnerTrap = GameObject.FindGameObjectWithTag("Spawner").GetComponent<RandomSpawnerTrap>();
     }
 
 
@@ -40,8 +37,7 @@ private IEnumerator DestroyWithTime(float time)
   private void DestroyAndSpawn()
   {
    
-    Destroy(selfCoin);
-    randomSpawner.MethodA();
+    Destroy(selfTrap);
+    randomSpawnerTrap.MethodA();
   }
-
 }
